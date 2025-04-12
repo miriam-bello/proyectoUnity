@@ -20,29 +20,20 @@ public class NewMonoBehaviourScript : MonoBehaviour
     {
         movimientoInput.x = Input.GetAxisRaw("Horizontal");
         movimientoInput.y = Input.GetAxisRaw("Vertical");
-        Debug.Log(movimientoInput);
-        if (movimientoInput.x > 0.1 || movimientoInput.x < -0.1)
+
+        if (movimientoInput.x != 0 || movimientoInput.y !=0)
         {
             animator.SetFloat("Horizontal", movimientoInput.x);
-            animator.SetFloat("Speed", movimientoInput.magnitude);
-            
-        }
-
-
-        if (movimientoInput.y > 0.1 || movimientoInput.y < -0.1)
-        {
             animator.SetFloat("Vertical", movimientoInput.y);
-            animator.SetFloat("Speed", movimientoInput.magnitude);
         }
-        
 
-        movimientoInput = movimientoInput.normalized;
+        animator.SetFloat("Speed", movimientoInput.normalized.magnitude);
 
 
     }
 
     private void FixedUpdate()
     {
-        rigidbody2D.linearVelocity = movimientoInput * velocidad;
+        rigidbody2D.linearVelocity = movimientoInput.normalized * velocidad;
     }
 }
