@@ -3,11 +3,26 @@ using UnityEngine;
 public class NewMonoBehaviourScript : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private static GameObject playerInstance;
     public float velocidad = 5f;
     private Rigidbody2D rigidbody2D;
     private Vector2 movimientoInput;
-    private Vector2 ultimaDireccion;
     private Animator animator;
+
+    //para que el solo haya un objeto player
+    private void Awake()
+    {
+        // Si ya hay un jugador, destruye este objeto para evitar duplicados
+        if (playerInstance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        // Si no hay otro jugador, marca este como persistente
+        playerInstance = gameObject;
+        DontDestroyOnLoad(gameObject);
+    }
 
     void Start()
     {
@@ -36,4 +51,6 @@ public class NewMonoBehaviourScript : MonoBehaviour
     {
         rigidbody2D.linearVelocity = movimientoInput.normalized * velocidad;
     }
+
+
 }
