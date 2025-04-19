@@ -1,39 +1,51 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class GestorPausa : MonoBehaviour
 {
-   private GameObject MenuPausa;
-   private bool juegoPausado= false;
+    [SerializeField] private GameObject MenuPausa;
+    private bool juegoPausado = false;
+
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) {
-
-            if (juegoPausado)
-            {
-                Reanudar();
-            }
-            else { Pausa(); }
+        Debug.Log("Intentando pausar..."); // Mensaje de depuración
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (juegoPausado) Reanudar();
+            else Pausa();
         }
     }
 
     public void Pausa()
     {
-        juegoPausado= true;
-        Time.timeScale = 0f;
-       
+        Debug.Log("Intentando pausar..."); // Mensaje de depuración
+
+        if (MenuPausa != null)
+        {
+            MenuPausa.GetComponent<Canvas>().enabled = true;
+            juegoPausado = true;
+            Time.timeScale = 0f;
+            Cursor.visible = true;
+            Debug.Log("Juego pausado correctamente");
+        }
+        else
+        {
+            Debug.LogError("No se puede pausar: MenuPausa es null");
+        }
     }
 
-    public void Salir() {
-        SceneManager.LoadScene("SceneMenuPrincipal");
-    }
-
-    public void Reanudar() {
+    public void Reanudar()
+    {
+        MenuPausa.GetComponent<Canvas>().enabled = false;
         juegoPausado = false;
         Time.timeScale = 1f;
-        MenuPausa.SetActive(false);
+        Cursor.visible = false;
     }
-   
+
+    public void Salir()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("SceneMenuPrincipal");
+    }
 }
