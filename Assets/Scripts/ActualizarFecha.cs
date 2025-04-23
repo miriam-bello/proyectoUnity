@@ -2,14 +2,12 @@ using System;
 using TMPro;
 using UnityEngine;
 
-public class ActualizarHora : MonoBehaviour
+public class ActualizarFecha : MonoBehaviour
 {
-
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
@@ -17,11 +15,9 @@ public class ActualizarHora : MonoBehaviour
     {
         GameObject gameManager = GameObject.FindWithTag("GameManager");
         DateTime fecha = gameManager.GetComponent<GameManager>().time;
-        int minutos= fecha.Minute;
-        int horas = fecha.Hour;
+        DayOfWeek diaSemana = fecha.DayOfWeek;
 
         TMP_Text textoHora = GetComponent<TextMeshProUGUI>();
-        textoHora.text= fecha.ToString("HH:mm");
-
+        textoHora.text = diaSemana.ToString();
     }
 }
