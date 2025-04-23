@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: ede40b7fe93e18844954efa8c360f0a3
+guid: 635202cd67944f1498d6b64cb0d8ab32
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3688862554218358700
-    second: cursor_pata_0
+      213: -93804739525916228
+    second: patitaCursor_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: cursor_pata_0
+      name: patitaCursor_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 32
-        height: 32
+        x: 2
+        y: 3
+        width: 13
+        height: 10
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 45813962d078eccc0800000000000000
-      internalID: -3688862554218358700
+      spriteID: cb94f4e161db2bef0800000000000000
+      internalID: -93804739525916228
       vertices: []
       indices: 
       edges: []
@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      patitaCursor_0: -93804739525916228
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
