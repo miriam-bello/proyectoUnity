@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e54484f9658c50745bffe4bbe10bd579, type: 3}
+  m_Name: Nekofresa
+  m_EditorClassIdentifier: 
+  itemNombre: Nekofresa
+  icon: {fileID: -5978485041735761461, guid: bb2754a8c400b4c4c939c62c155d7164, type: 3}
+  maxStack: 99

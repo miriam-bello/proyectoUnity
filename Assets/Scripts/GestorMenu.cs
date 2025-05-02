@@ -4,40 +4,34 @@ using UnityEngine.SceneManagement;
 public class GestorMenu : MonoBehaviour
 {
 
-
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void Jugar()
     {
-        DestroyGameManager();
         //cargar escena
-        SceneManager.LoadScene("SceneGranja");
+        GameManager gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
+        gameManager.Jugar();
     }
 
     public void Creditos()
     {
-        DestroyGameManager();
         //cargar escena
-        SceneManager.LoadScene("SceneCreditos");
+        GameManager gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
+        gameManager.Creditos();
     }
 
     public void Menu()
     {
-        DestroyGameManager();
         //cargar escena
-        SceneManager.LoadScene("SceneMenuPrincipal");
+        GameManager gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
+        gameManager.Menu();
     }
 
     public void Salir()
     {
         //cargar escena
-        Application.Quit();
+        GameManager gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
+        gameManager.Salir();
     }
 
-    public void DestroyGameManager()
-    {
-        Destroy(GameObject.FindWithTag("GameManager"));
-        Destroy(GameObject.FindWithTag("Player"));
-
-    }
+ 
 }

@@ -40823,6 +40823,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: interfaz
       objectReference: {fileID: 0}
+    - target: {fileID: 8861533931728851981, guid: 03d710371d9ca5f4dbceb2f402d3ef72, type: 3}
+      propertyPath: m_TagString
+      value: interfaz
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

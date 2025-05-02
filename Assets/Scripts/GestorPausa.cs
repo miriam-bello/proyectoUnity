@@ -94,7 +94,8 @@ public class GestorPausa : MonoBehaviour
 
     public void Salir()
     {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene("SceneMenuPrincipal");
+        //cargar escena
+        GameManager gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
+        gameManager.Menu();
     }
 }

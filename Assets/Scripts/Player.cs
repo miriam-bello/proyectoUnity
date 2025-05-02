@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class NewMonoBehaviourScript : MonoBehaviour
+public class Player : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private static GameObject playerInstance;
@@ -19,9 +19,8 @@ public class NewMonoBehaviourScript : MonoBehaviour
             return;
         }
 
-        // Si no hay otro jugador, marca este como persistente
+        // Si no hay otro jugador, marca este como singleton
         playerInstance = gameObject;
-        DontDestroyOnLoad(gameObject);
     }
 
     void Start()

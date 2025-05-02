@@ -1,6 +1,6 @@
 using NUnit.Framework;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 //para que lo puedas guardar como un fichero.asset
 [CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Item")]
@@ -31,17 +31,17 @@ public class Slot
 public class InventarioManager : MonoBehaviour
 {
     private static GameObject inventarioInstance;
-    public Slot[] contenidoInventario = { new Slot(null, 0), new Slot(null, 0), new Slot(null, 0), new Slot(null, 0), new Slot(null, 0), new Slot(null, 0), new Slot(null, 0), new Slot(null, 0) };
+    public Slot[] contenidoInventario = { new Slot( null, 0), new Slot(null, 0), new Slot(null, 0), new Slot(null, 0), new Slot(null, 0), new Slot(null, 0), new Slot(null, 0), new Slot(null, 0) };
 
     private void Awake()
     {
-        if (inventarioInstance != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
+        Nekofresa data = Resources.Load<Nekofresa>("Items/Nekofresa");
+        contenidoInventario[0].item = data;
+
+        //para solo tener un inventario singleton
         inventarioInstance = gameObject;
-        DontDestroyOnLoad(gameObject);
+
+        RebuildUiInventario();
     }
 
     //para repintar la interfaz cada vez que haya un cambio
