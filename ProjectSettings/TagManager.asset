@@ -6,6 +6,7 @@ TagManager:
   tags:
   - fondo
   - GameManager
+  - Inventario
   layers:
   - Default
   - TransparentFX
