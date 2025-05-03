@@ -39,8 +39,6 @@ public class GestorPausa : MonoBehaviour
             MenuPausa.GetComponent<Canvas>().enabled = true;
             juegoPausado = true;
             Time.timeScale = 0f;
-            Debug.Log("Juego pausado");
-
 
             // Desactivamos el personaje
             if (personajeDesactivar && personaje != null)

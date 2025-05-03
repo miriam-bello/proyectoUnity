@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Nekofresa", menuName = "Scriptable Objects/ekofresa")]
+[CreateAssetMenu(fileName = "Nekofresa", menuName = "Scriptable Objects/Nekofresa")]
 public class Nekofresa : Item
 {
     public override void Use()
