@@ -14,13 +14,13 @@ public abstract class Item : ScriptableObject
     public abstract void Use();
 }
 
-
-public class Slot
+[System.Serializable]
+public class PilaDeItem
 {
     public Item item;
     public int cantidad;
 
-    public Slot(Item item, int cantidad)
+    public PilaDeItem(Item item, int cantidad)
     {
         this.item = item;
         this.cantidad = cantidad;
@@ -32,15 +32,16 @@ public class Slot
 public class InventarioManager : MonoBehaviour
 {
     private static GameObject inventarioInstance;
-    public Slot[] contenidoInventario = { new Slot(null, 0), new Slot(null, 0), new Slot(null, 0), new Slot(null, 0), new Slot(null, 0), new Slot(null, 0), new Slot(null, 0), new Slot(null, 0) };
+    public PilaDeItem[] inventario = { new PilaDeItem(null, 0), new PilaDeItem(null, 0), new PilaDeItem(null, 0), new PilaDeItem(null, 0), new PilaDeItem(null, 0), new PilaDeItem(null, 0), new PilaDeItem(null, 0), new PilaDeItem(null, 0) };
 
     private void Awake()
     {
         Nekofresa data = Resources.Load<Nekofresa>("Items/Nekofresa");
-        contenidoInventario[0].item = data;
+        inventario[0].item = data;
+        inventario[0].cantidad = 2;
 
-        //para solo tener un inventario singleton
-        inventarioInstance = gameObject;
+       //para solo tener un inventario singleton
+       inventarioInstance = gameObject;
 
         RebuildUiInventario();
     }
@@ -50,11 +51,14 @@ public class InventarioManager : MonoBehaviour
     {
         for (int i = 0; i < transform.childCount; i++)
         {
+            PilaDeItem slot = inventario[i];
             Transform childTransform = transform.GetChild(i);
             Image image = childTransform.gameObject.GetComponent<Image>();
-            if (contenidoInventario[i].item != null)
+            if (slot.item != null)
             {
-                image.sprite = contenidoInventario[i].item.icon;
+                image.sprite = slot.item.icon;
+                childTransform.gameObject.GetComponent<SlutScript>().SetCantidad(slot.cantidad);
+
             }
         }
     }
@@ -62,21 +66,21 @@ public class InventarioManager : MonoBehaviour
     public void addItem(Item item, int cantidad)
     {
         //añadir a un stack que ya existe
-        foreach (Slot slot in contenidoInventario)
+        foreach (PilaDeItem pilaDeItem in inventario)
         {
-            if (slot.item == null)
+            if (pilaDeItem.item == null)
             {
                 continue;
             }
             else
             {
-                if (item.itemNombre == slot.item.itemNombre)
+                if (item.itemNombre == pilaDeItem.item.itemNombre)
                 {
                     //añadir la cantidad al item que ya está en el inventario
-                    slot.cantidad += cantidad;
-                    cantidad = slot.cantidad - slot.item.maxStack;
+                    pilaDeItem.cantidad += cantidad;
+                    cantidad = pilaDeItem.cantidad - pilaDeItem.item.maxStack;
                     if (cantidad < 0) { cantidad = 0; }
-                    if (slot.cantidad > slot.item.maxStack) { cantidad = slot.item.maxStack; }
+                    if (pilaDeItem.cantidad > pilaDeItem.item.maxStack) { cantidad = pilaDeItem.item.maxStack; }
                 }
             }
 
@@ -85,11 +89,13 @@ public class InventarioManager : MonoBehaviour
         // si no caben mas se añaden en otro slot
         if (cantidad > 0)
         {
-            for (int i = 0; i < contenidoInventario.Length; i++)
+            for (int i = 0; i < inventario.Length; i++)
             {
-                if (contenidoInventario[i].item == null)
+                PilaDeItem pilaDeItem = inventario[i];
+                if (pilaDeItem.item == null)
                 {
-                    contenidoInventario[i].item = item;
+                    pilaDeItem.item = item;
+                    pilaDeItem.cantidad = cantidad;
                     cantidad = 0;
                     break;
                 }
@@ -108,7 +114,7 @@ public class InventarioManager : MonoBehaviour
 
     public void removeItem(Item item)
     {
-        foreach (Slot slot in contenidoInventario)
+        foreach (PilaDeItem slot in inventario)
         {
             if (item.itemNombre == slot.item.itemNombre)
             {
@@ -125,7 +131,7 @@ public class InventarioManager : MonoBehaviour
 
     public void useItemAt(int slutPosition)
     {
-        Item item = contenidoInventario[slutPosition].item;
+        Item item = inventario[slutPosition].item;
         if (item == null)
         {
             return;

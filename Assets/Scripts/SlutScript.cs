@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 public class SlutScript : MonoBehaviour,IPointerClickHandler
@@ -13,5 +14,10 @@ public class SlutScript : MonoBehaviour,IPointerClickHandler
         inventarioManager.useItemAt(slutPosition);
     }
 
+    public void SetCantidad(int cantidad) {
+        GameObject cantidadGameObject = transform.Find("Cantidad").gameObject;
+        cantidadGameObject.GetComponent<TextMeshProUGUI>().SetText(cantidad.ToString());
+
+    }
 
 }

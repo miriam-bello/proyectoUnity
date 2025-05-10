@@ -2,12 +2,13 @@ using UnityEngine;
 
 public class Drop : MonoBehaviour
 {
-    public Item item;
+    [SerializeField]
+    public PilaDeItem pilaDeItem;
 
     private void Awake()
     {
         SpriteRenderer spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-        Sprite spriteItem = item.icon;
+        Sprite spriteItem = pilaDeItem.item.icon;
         spriteRenderer.sprite = spriteItem;
     }
 

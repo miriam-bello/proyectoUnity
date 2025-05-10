@@ -60,7 +60,8 @@ public class Player : MonoBehaviour
         if (drop)
         {
             InventarioManager inventarioManager = GameObject.FindWithTag("Inventario").GetComponent<InventarioManager>();
-            inventarioManager.addItem(collision.gameObject.GetComponent<Drop>().item,1);
+            PilaDeItem pilaDeItem = collision.gameObject.GetComponent<Drop>().pilaDeItem;
+            inventarioManager.addItem(pilaDeItem.item, pilaDeItem.cantidad);
             Destroy(collision.gameObject);
 
         }
