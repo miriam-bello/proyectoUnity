@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -20,7 +21,7 @@ public class GameManager : MonoBehaviour
         // Si no hay otro gameManeger, marca este como persistente
         gameManegerInstance = gameObject;
         DontDestroyOnLoad(gameObject);
-       
+
         //sceneLoaded para suscribirme a los eventos de carga de escena (se llama a la funcion PrepararJuego)
         SceneManager.sceneLoaded += PrepararJuego;
         PrepararJuego();
@@ -36,7 +37,16 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         time = time.AddMilliseconds(Time.deltaTime * 120 * 1000);
+
+        HandlePlanting();
     }
+
+    public static GameManager GetInstance()
+    {
+        return GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
+    }
+
+
 
     public void PrepararJuego()
     {
@@ -102,4 +112,56 @@ public class GameManager : MonoBehaviour
         Destroy(GameObject.FindWithTag("interfaz"));
     }
 
+    //-----------Gestión plantar----------
+
+    Action<PlantingSpotScript> onPlant;
+    bool isPlanting = false;
+    public LayerMask plantingLayer;
+
+    //le pasamos una lambda, recibe un PlantingSpotScrit
+    public void SetIsPlanting(Action<PlantingSpotScript> onPlant)
+    {
+
+        isPlanting = onPlant != null;
+
+        if (isPlanting)
+        {
+            Debug.Log("Entering planting mode");
+        }
+        else {
+            Debug.Log("Leaving planting mode");
+        }
+         
+        this.onPlant = onPlant;
+
+    }
+
+    private void HandlePlanting()
+    {
+        if (!isPlanting)
+        {
+            return;
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (EventSystem.current.IsPointerOverGameObject()) {
+                Debug.Log("Yes");
+            }
+
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit2D[] hits = Physics2D.RaycastAll(new Vector2(ray.origin.x, ray.origin.y), Vector2.zero, plantingLayer);
+            foreach (RaycastHit2D raycastHit in hits)
+            {
+                onPlant(raycastHit.collider.gameObject.GetComponent<PlantingSpotScript>());
+                SetIsPlanting(null);
+                break;
+            }
+
+        }
+        else
+        {
+            // TODO Marcar los planting spots
+        }
+    }
 }

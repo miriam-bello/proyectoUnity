@@ -36,7 +36,7 @@ public class InventarioManager : MonoBehaviour
 
     private void Awake()
     {
-        Nekofresa data = Resources.Load<Nekofresa>("Items/Nekofresa");
+        SemillasPurrrengena data = Resources.Load<SemillasPurrrengena>("Items/SemillasPurrrengena");
         inventario[0].item = data;
         inventario[0].cantidad = 2;
 
