@@ -1,11 +1,12 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private static GameObject playerInstance;
     public float velocidad = 5f;
-    private Rigidbody2D rigidbody2D;
+    private new Rigidbody2D rigidbody2D;
     private Vector2 movimientoInput;
     private Animator animator;
 
@@ -51,5 +52,18 @@ public class Player : MonoBehaviour
         rigidbody2D.linearVelocity = movimientoInput.normalized * velocidad;
     }
 
+    //para recogerr del suelo
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+       Drop drop= collision.gameObject.GetComponentInParent<Drop>();
+
+        if (drop)
+        {
+            InventarioManager inventarioManager = GameObject.FindWithTag("Inventario").GetComponent<InventarioManager>();
+            inventarioManager.addItem(collision.gameObject.GetComponent<Drop>().item,1);
+            Destroy(collision.gameObject);
+
+        }
+    }
 
 }

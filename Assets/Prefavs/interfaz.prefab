@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5285843712323417915}
   - component: {fileID: 8769626087408940024}
   m_Layer: 5
-  m_Name: Slot6
+  m_Name: Slot7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -110,7 +110,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 849, y: 482}
+  m_AnchoredPosition: {x: 840, y: 482}
   m_SizeDelta: {x: 180.2703, y: 61.937}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7335713265839717248
@@ -310,7 +310,7 @@ GameObject:
   - component: {fileID: 6368373250018773289}
   m_Layer: 5
   m_Name: slots
-  m_TagString: Untagged
+  m_TagString: Inventario
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -353,7 +353,7 @@ GameObject:
   - component: {fileID: 8038895192869646368}
   - component: {fileID: 4617461636637681777}
   m_Layer: 5
-  m_Name: Slot3
+  m_Name: Slot4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -451,7 +451,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 849, y: 447.31525}
+  m_AnchoredPosition: {x: 840, y: 447.31525}
   m_SizeDelta: {x: 180.2703, y: 39.2691}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1493527258411686855
@@ -547,7 +547,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 1.4077148, w: 0}
+  m_margin: {x: -10.49292, y: 0, z: -11.18396, w: -17.837952}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -577,7 +577,7 @@ GameObject:
   - component: {fileID: 6229091297569012984}
   - component: {fileID: 8472048697515390694}
   m_Layer: 5
-  m_Name: Slot5
+  m_Name: Slot6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -674,8 +674,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 850.308, y: 462.80945}
-  m_SizeDelta: {x: -1718.0911, y: -943.6289}
+  m_AnchoredPosition: {x: 841.7312, y: 462.80945}
+  m_SizeDelta: {x: -1700.9375, y: -943.6289}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4586881116073222065
 CanvasRenderer:
@@ -727,7 +727,7 @@ GameObject:
   - component: {fileID: 3712572928242301408}
   - component: {fileID: 7324771971220928750}
   m_Layer: 5
-  m_Name: Slot2
+  m_Name: Slot3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -802,7 +802,7 @@ GameObject:
   - component: {fileID: 6981459076398050097}
   - component: {fileID: 4043476275067802344}
   m_Layer: 5
-  m_Name: Slot4
+  m_Name: Slot5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -930,7 +930,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: -8009317943142206397, guid: 73042c0e7c1bf8546b415067e4c16ac9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -954,7 +954,7 @@ GameObject:
   - component: {fileID: 4505580198999220281}
   m_Layer: 5
   m_Name: interfaz
-  m_TagString: Untagged
+  m_TagString: interfaz
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -980,7 +980,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 3.42}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!223 &4348627245406790218
 Canvas:
@@ -1044,4 +1044,4 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0

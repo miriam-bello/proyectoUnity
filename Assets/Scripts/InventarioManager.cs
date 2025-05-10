@@ -1,12 +1,13 @@
 using NUnit.Framework;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 //para que lo puedas guardar como un fichero.asset
-[CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Item")]
+[CreateAssetMenu(fileName = "Nuevo Item", menuName = "Inventory/Item")]
 public abstract class Item : ScriptableObject
 {
-    public string itemNombre = "New Item";
+    public string itemNombre = "Nuevo Item";
     public Sprite icon = null;
     public int maxStack = 99;
 
@@ -31,7 +32,7 @@ public class Slot
 public class InventarioManager : MonoBehaviour
 {
     private static GameObject inventarioInstance;
-    public Slot[] contenidoInventario = { new Slot( null, 0), new Slot(null, 0), new Slot(null, 0), new Slot(null, 0), new Slot(null, 0), new Slot(null, 0), new Slot(null, 0), new Slot(null, 0) };
+    public Slot[] contenidoInventario = { new Slot(null, 0), new Slot(null, 0), new Slot(null, 0), new Slot(null, 0), new Slot(null, 0), new Slot(null, 0), new Slot(null, 0), new Slot(null, 0) };
 
     private void Awake()
     {
@@ -47,7 +48,6 @@ public class InventarioManager : MonoBehaviour
     //para repintar la interfaz cada vez que haya un cambio
     private void RebuildUiInventario()
     {
-
         for (int i = 0; i < transform.childCount; i++)
         {
             Transform childTransform = transform.GetChild(i);
@@ -56,7 +56,6 @@ public class InventarioManager : MonoBehaviour
             {
                 image.sprite = contenidoInventario[i].item.icon;
             }
-            
         }
     }
 
@@ -65,25 +64,34 @@ public class InventarioManager : MonoBehaviour
         //añadir a un stack que ya existe
         foreach (Slot slot in contenidoInventario)
         {
-            if (item.itemNombre == slot.item.itemNombre)
+            if (slot.item == null)
             {
-                //añadir la cantidad al item que ya está en el inventario
-                slot.cantidad += cantidad;
-                cantidad = slot.cantidad - slot.item.maxStack;
-                if (cantidad < 0) { cantidad = 0; }
-                if (slot.cantidad > slot.item.maxStack) { cantidad = slot.item.maxStack; }
+                continue;
             }
+            else
+            {
+                if (item.itemNombre == slot.item.itemNombre)
+                {
+                    //añadir la cantidad al item que ya está en el inventario
+                    slot.cantidad += cantidad;
+                    cantidad = slot.cantidad - slot.item.maxStack;
+                    if (cantidad < 0) { cantidad = 0; }
+                    if (slot.cantidad > slot.item.maxStack) { cantidad = slot.item.maxStack; }
+                }
+            }
+
         }
 
         // si no caben mas se añaden en otro slot
         if (cantidad > 0)
         {
-            for (int i = 0; contenidoInventario.Length > 0; i++)
+            for (int i = 0; i < contenidoInventario.Length; i++)
             {
                 if (contenidoInventario[i].item == null)
                 {
                     contenidoInventario[i].item = item;
                     cantidad = 0;
+                    break;
                 }
             }
         }
@@ -114,4 +122,17 @@ public class InventarioManager : MonoBehaviour
         }
         RebuildUiInventario();
     }
+
+    public void useItemAt(int slutPosition)
+    {
+        Item item = contenidoInventario[slutPosition].item;
+        if (item == null)
+        {
+            return;
+        }
+
+        item.Use();
+
+    }
+
 }
