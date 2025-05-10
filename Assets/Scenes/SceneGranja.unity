@@ -33939,7 +33939,7 @@ GameObject:
   - component: {fileID: 1390634173}
   - component: {fileID: 1390634172}
   - component: {fileID: 1390634171}
-  - component: {fileID: 1390634170}
+  - component: {fileID: 1390634174}
   m_Layer: 0
   m_Name: drop
   m_TagString: Untagged
@@ -33947,19 +33947,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1390634170
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1390634169}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b3c9dec66c49a64e80334cd98a5e8cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: a54dcd5c7a602d143ab26704b72b718e, type: 2}
 --- !u!58 &1390634171
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -34066,6 +34053,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1390634174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1390634169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b3c9dec66c49a64e80334cd98a5e8cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pilaDeItem:
+    item: {fileID: 11400000, guid: a54dcd5c7a602d143ab26704b72b718e, type: 2}
+    cantidad: 2
 --- !u!4 &1410559644 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2125736227414105515, guid: ffc7ee95488e9f642b6d620dd3dc5ad0, type: 3}
@@ -41662,6 +41664,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2715991871861264037, guid: 03d710371d9ca5f4dbceb2f402d3ef72, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4108985132163748560, guid: 03d710371d9ca5f4dbceb2f402d3ef72, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -41765,6 +41771,22 @@ PrefabInstance:
     - target: {fileID: 6226743209542326028, guid: 03d710371d9ca5f4dbceb2f402d3ef72, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 7094759101514325675, guid: 03d710371d9ca5f4dbceb2f402d3ef72, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7094759101514325675, guid: 03d710371d9ca5f4dbceb2f402d3ef72, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476220553601882688, guid: 03d710371d9ca5f4dbceb2f402d3ef72, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -3518513393446039591, guid: 9fad9063b9c8ead4a97837faed050c69, type: 3}
+    - target: {fileID: 8702114521942192150, guid: 03d710371d9ca5f4dbceb2f402d3ef72, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8758206718493687763, guid: 03d710371d9ca5f4dbceb2f402d3ef72, type: 3}
       propertyPath: m_AnchoredPosition.x

@@ -56,9 +56,13 @@ public class InventarioManager : MonoBehaviour
             Image image = childTransform.gameObject.GetComponent<Image>();
             if (slot.item != null)
             {
+                image.color = image.color.WithAlpha(1);
                 image.sprite = slot.item.icon;
                 childTransform.gameObject.GetComponent<SlutScript>().SetCantidad(slot.cantidad);
 
+            }
+            else {
+                image.color = image.color.WithAlpha(0);
             }
         }
     }
