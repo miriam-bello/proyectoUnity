@@ -17,10 +17,14 @@ public class SemillasPurrrengena : Item
                 {
                     plantingSpot.SetPlanta(plantaData);
                     pilaDeItem.cantidad--;
+                    InventarioManager.GetInstance().RebuildUiInventario();
                 }
 
             );
         Debug.Log("se usó una SemillasPurrrengena");
+
     }
+
+
 
 }

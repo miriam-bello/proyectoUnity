@@ -50,31 +50,41 @@ public class InventarioManager : MonoBehaviour
         RebuildUiInventario();
     }
 
-    private void Update()
+
+    //--------------- instancia del InventarioManager ---------------
+    public static InventarioManager GetInstance()
     {
-        RebuildUiInventario();
+        return GameObject.FindWithTag("Inventario").GetComponent<InventarioManager>();
     }
 
-
     //para repintar la interfaz cada vez que haya un cambio
-    private void RebuildUiInventario()
+    public void RebuildUiInventario()
     {
         for (int i = 0; i < transform.childCount; i++)
         {
             PilaDeItem slot = inventario[i];
+
+            if (slot.cantidad < 1)
+            {
+                slot.item = null;
+            }
+
             Transform childTransform = transform.GetChild(i);
             Image image = childTransform.gameObject.GetComponent<Image>();
             if (slot.item != null)
             {
                 image.color = image.color.WithAlpha(1);
                 image.sprite = slot.item.icon;
-                childTransform.gameObject.GetComponent<SlutScript>().SetCantidad(slot.cantidad);
 
             }
             else {
                 //para que no se vea cuando no hay nada
                 image.color = image.color.WithAlpha(0);
+                image.sprite = null;
             }
+
+            childTransform.gameObject.GetComponent<SlutScript>().SetCantidad(slot.cantidad);
+            
         }
     }
 
@@ -128,25 +138,6 @@ public class InventarioManager : MonoBehaviour
 
     }
 
-    //quitar del inventario
-    public void removeItem(Item item)
-    {
-        //recorre el inventario
-        foreach (PilaDeItem pilaDeItem in inventario)
-        {
-            if (item.itemNombre == pilaDeItem.item.itemNombre)
-            {
-                //si el item que se usa tiene mas de 0  quita 1
-                if (pilaDeItem.cantidad > 0)
-                {
-                    pilaDeItem.cantidad--;
-                    break;
-                }
-
-            }
-        }
-        RebuildUiInventario();
-    }
 
     //usar item en la posicion selecionada del inventario
     public void useItemAt(int slutPosition)
