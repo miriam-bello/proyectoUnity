@@ -5,15 +5,17 @@ using UnityEngine.UI;
 
 //para que lo puedas guardar como un fichero.asset
 [CreateAssetMenu(fileName = "Nuevo Item", menuName = "Inventory/Item")]
+// clase Item (nombre, icono, y numero maximo estaqueable)
 public abstract class Item : ScriptableObject
 {
     public string itemNombre = "Nuevo Item";
     public Sprite icon = null;
     public int maxStack = 99;
 
-    public abstract void Use();
+    public abstract void Use(PilaDeItem pilaDeItem);
 }
 
+// clase Pila de Item que contiene un item y que cantidad tiene de este
 [System.Serializable]
 public class PilaDeItem
 {
@@ -29,8 +31,10 @@ public class PilaDeItem
 }
 
 
+//---------------Manejador del inventario---------------------
 public class InventarioManager : MonoBehaviour
 {
+
     private static GameObject inventarioInstance;
     public PilaDeItem[] inventario = { new PilaDeItem(null, 0), new PilaDeItem(null, 0), new PilaDeItem(null, 0), new PilaDeItem(null, 0), new PilaDeItem(null, 0), new PilaDeItem(null, 0), new PilaDeItem(null, 0), new PilaDeItem(null, 0) };
 
@@ -45,6 +49,12 @@ public class InventarioManager : MonoBehaviour
 
         RebuildUiInventario();
     }
+
+    private void Update()
+    {
+        RebuildUiInventario();
+    }
+
 
     //para repintar la interfaz cada vez que haya un cambio
     private void RebuildUiInventario()
@@ -62,11 +72,13 @@ public class InventarioManager : MonoBehaviour
 
             }
             else {
+                //para que no se vea cuando no hay nada
                 image.color = image.color.WithAlpha(0);
             }
         }
     }
 
+    //añadir al inventario
     public void addItem(Item item, int cantidad)
     {
         //añadir a un stack que ya existe
@@ -116,15 +128,18 @@ public class InventarioManager : MonoBehaviour
 
     }
 
+    //quitar del inventario
     public void removeItem(Item item)
     {
-        foreach (PilaDeItem slot in inventario)
+        //recorre el inventario
+        foreach (PilaDeItem pilaDeItem in inventario)
         {
-            if (item.itemNombre == slot.item.itemNombre)
+            if (item.itemNombre == pilaDeItem.item.itemNombre)
             {
-                if (slot.cantidad > 0)
+                //si el item que se usa tiene mas de 0  quita 1
+                if (pilaDeItem.cantidad > 0)
                 {
-                    slot.cantidad--;
+                    pilaDeItem.cantidad--;
                     break;
                 }
 
@@ -133,6 +148,7 @@ public class InventarioManager : MonoBehaviour
         RebuildUiInventario();
     }
 
+    //usar item en la posicion selecionada del inventario
     public void useItemAt(int slutPosition)
     {
         Item item = inventario[slutPosition].item;
@@ -140,8 +156,8 @@ public class InventarioManager : MonoBehaviour
         {
             return;
         }
-
-        item.Use();
+        
+        item.Use(inventario[slutPosition]);
 
     }
 

@@ -3,11 +3,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SemillasPurrrengena", menuName = "Scriptable Objects/SemillasPurrrengena")]
 public class SemillasPurrrengena : Item
 {
-
-
     Planta plantaData;
 
-    public override void Use()
+    public override void Use(PilaDeItem pilaDeItem)
     {
         if (plantaData == null)
         {
@@ -15,10 +13,14 @@ public class SemillasPurrrengena : Item
         }
 
         GameManager.GetInstance().SetIsPlanting(
-            plantingSpot => plantingSpot.SetPlanta(plantaData)
+            plantingSpot =>
+                {
+                    plantingSpot.SetPlanta(plantaData);
+                    pilaDeItem.cantidad--;
+                }
+
             );
         Debug.Log("se usó una SemillasPurrrengena");
-
     }
 
 }

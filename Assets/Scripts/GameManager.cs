@@ -37,16 +37,17 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         time = time.AddMilliseconds(Time.deltaTime * 120 * 1000);
-
         HandlePlanting();
     }
 
+    //--------------- instancia del gameManager ---------------
     public static GameManager GetInstance()
     {
         return GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
     }
 
 
+    //---------------Preparar juego----------------
 
     public void PrepararJuego()
     {
@@ -65,7 +66,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
     public void PrepararJuego(Scene scene, LoadSceneMode loadSceneMode)
     {
         if (scene.name == "SceneGranja")
@@ -74,6 +74,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //----------------Gestión de las pantallas ---------------
     public void Jugar()
     {
         DestroyGame();
@@ -105,6 +106,7 @@ public class GameManager : MonoBehaviour
         Application.Quit();
     }
 
+    //---------------destruir objetos---------------
     public void DestroyGame()
     {
         time = new DateTime(1993, 1, 2, 7, 0, 0);
