@@ -27,16 +27,21 @@ public class PilaDeItem
         this.item = item;
         this.cantidad = cantidad;
     }
-
 }
 
 
 //---------------Manejador del inventario---------------------
 public class InventarioManager : MonoBehaviour
 {
-
     private static GameObject inventarioInstance;
     public PilaDeItem[] inventario = { new PilaDeItem(null, 0), new PilaDeItem(null, 0), new PilaDeItem(null, 0), new PilaDeItem(null, 0), new PilaDeItem(null, 0), new PilaDeItem(null, 0), new PilaDeItem(null, 0), new PilaDeItem(null, 0) };
+
+
+    //--------------- instancia del InventarioManager ---------------
+    public static InventarioManager GetInstance()
+    {
+        return GameObject.FindWithTag("Inventario").GetComponent<InventarioManager>();
+    }
 
     private void Awake()
     {
@@ -49,13 +54,7 @@ public class InventarioManager : MonoBehaviour
 
         RebuildUiInventario();
     }
-
-
-    //--------------- instancia del InventarioManager ---------------
-    public static InventarioManager GetInstance()
-    {
-        return GameObject.FindWithTag("Inventario").GetComponent<InventarioManager>();
-    }
+   
 
     //para repintar la interfaz cada vez que haya un cambio
     public void RebuildUiInventario()
@@ -84,7 +83,6 @@ public class InventarioManager : MonoBehaviour
             }
 
             childTransform.gameObject.GetComponent<SlutScript>().SetCantidad(slot.cantidad);
-            
         }
     }
 

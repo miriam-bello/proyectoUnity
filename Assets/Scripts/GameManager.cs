@@ -120,7 +120,7 @@ public class GameManager : MonoBehaviour
     bool isPlanting = false;
     public LayerMask plantingLayer;
 
-    //le pasamos una lambda, recibe un PlantingSpotScrit
+    //le pasamos una lambda, recibe un PlantingSpotScript
     public void SetIsPlanting(Action<PlantingSpotScript> onPlant)
     {
 
