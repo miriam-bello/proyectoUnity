@@ -46,6 +46,15 @@ public class InventarioManager : MonoBehaviour
 
     private void Awake()
     {
+
+        // Si ya hay un gameManeger, destruye este objeto para evitar duplicados
+        if (inventarioInstance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+
         //objetos con los que empiezas
         SemillasPurrrengena data1 = Resources.Load<SemillasPurrrengena>("Items/SemillasPurrrengena");
         inventario[0].item = data1;
