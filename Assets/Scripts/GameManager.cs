@@ -8,6 +8,14 @@ public class GameManager : MonoBehaviour
     private static GameObject gameManegerInstance;
     public DateTime time = new DateTime(1993, 1, 2, 7, 0, 0);
 
+  
+    //--------------- instancia del gameManager ---------------
+    public static GameManager GetInstance()
+    {
+        return GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
+    }
+
+
     //para que el solo haya un objeto gameManeger
     private void Awake()
     {
@@ -27,12 +35,6 @@ public class GameManager : MonoBehaviour
         PrepararJuego();
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -40,15 +42,7 @@ public class GameManager : MonoBehaviour
         HandlePlanting();
     }
 
-    //--------------- instancia del gameManager ---------------
-    public static GameManager GetInstance()
-    {
-        return GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
-    }
-
-
     //---------------Preparar juego----------------
-
     public void PrepararJuego()
     {
         //recuperamos el gameObject player
@@ -64,6 +58,7 @@ public class GameManager : MonoBehaviour
         {
             DontDestroyOnLoad(interfazGameObject);
         }
+
     }
 
     public void PrepararJuego(Scene scene, LoadSceneMode loadSceneMode)
@@ -112,6 +107,7 @@ public class GameManager : MonoBehaviour
         time = new DateTime(1993, 1, 2, 7, 0, 0);
         Destroy(GameObject.FindWithTag("Player"));
         Destroy(GameObject.FindWithTag("interfaz"));
+        Destroy(GameObject.FindWithTag("Inventario"));
     }
 
     //-----------Gestión plantar----------
@@ -123,7 +119,6 @@ public class GameManager : MonoBehaviour
     //le pasamos una lambda, recibe un PlantingSpotScript
     public void SetIsPlanting(Action<PlantingSpotScript> onPlant)
     {
-
         isPlanting = onPlant != null;
 
         if (isPlanting)
@@ -135,7 +130,6 @@ public class GameManager : MonoBehaviour
         }
          
         this.onPlant = onPlant;
-
     }
 
     private void HandlePlanting()

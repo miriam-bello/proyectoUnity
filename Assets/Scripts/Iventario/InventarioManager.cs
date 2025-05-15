@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 //para que lo puedas guardar como un fichero.asset
 [CreateAssetMenu(fileName = "Nuevo Item", menuName = "Inventory/Item")]
+
 // clase Item (nombre, icono, y numero maximo estaqueable)
 public abstract class Item : ScriptableObject
 {
@@ -45,16 +46,21 @@ public class InventarioManager : MonoBehaviour
 
     private void Awake()
     {
-        SemillasPurrrengena data = Resources.Load<SemillasPurrrengena>("Items/SemillasPurrrengena");
-        inventario[0].item = data;
-        inventario[0].cantidad = 2;
+        //objetos con los que empiezas
+        SemillasPurrrengena data1 = Resources.Load<SemillasPurrrengena>("Items/SemillasPurrrengena");
+        inventario[0].item = data1;
+        inventario[0].cantidad = 1;
 
-       //para solo tener un inventario singleton
-       inventarioInstance = gameObject;
+        SemillasNyantomato data2 = Resources.Load<SemillasNyantomato>("Items/SemillasNyantomato");
+        inventario[1].item = data2;
+        inventario[1].cantidad = 1;
+
+        //para solo tener un inventario singleton
+        inventarioInstance = gameObject;
 
         RebuildUiInventario();
     }
-   
+
 
     //para repintar la interfaz cada vez que haya un cambio
     public void RebuildUiInventario()
@@ -76,7 +82,8 @@ public class InventarioManager : MonoBehaviour
                 image.sprite = slot.item.icon;
 
             }
-            else {
+            else
+            {
                 //para que no se vea cuando no hay nada
                 image.color = image.color.WithAlpha(0);
                 image.sprite = null;
@@ -145,7 +152,7 @@ public class InventarioManager : MonoBehaviour
         {
             return;
         }
-        
+
         item.Use(inventario[slutPosition]);
 
     }
