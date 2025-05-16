@@ -64,9 +64,14 @@ public class InventarioManager : MonoBehaviour
         inventario[1].item = data2;
         inventario[1].cantidad = 1;
 
+        Nekofresa data3 = Resources.Load<Nekofresa>("Items/Nekofresa");
+        inventario[2].item = data3;
+        inventario[2].cantidad = 1;
+
         //para solo tener un inventario singleton
         inventarioInstance = gameObject;
 
+        DontDestroyOnLoad(gameObject);
         RebuildUiInventario();
     }
 

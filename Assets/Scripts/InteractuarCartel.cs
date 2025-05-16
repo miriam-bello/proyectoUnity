@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InteractuarCartel2D : MonoBehaviour
 {
@@ -29,4 +30,10 @@ public class InteractuarCartel2D : MonoBehaviour
             cartel.GetComponent<Canvas>().enabled= true;
         }
     }
+
+    [SerializeField] private GameObject borde;
+    private void OnMouseEnter() => borde.GetComponent<SpriteRenderer>().enabled = true;
+
+
+    private void OnMouseExit() => borde.GetComponent<SpriteRenderer>().enabled = false;
 }

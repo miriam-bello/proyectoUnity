@@ -29,5 +29,9 @@ public class InteractuarPc : MonoBehaviour
         }
     }
 
+    //cuando pasas el raton por encima el borde
+    [SerializeField] private GameObject borde;
+    private void OnMouseEnter() => borde.GetComponent<SpriteRenderer>().enabled = true;
+    private void OnMouseExit() => borde.GetComponent<SpriteRenderer>().enabled = false;
 
 }
