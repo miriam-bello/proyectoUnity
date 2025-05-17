@@ -5,8 +5,8 @@ public class PlantingSpotScript : MonoBehaviour
 {
     private static GameObject plantingSpotInstance;
     //momento en el que fue plantado
-    private DateTime plantadoTime;
-    private Planta plantaPlantada;
+    public DateTime plantadoTime;
+    public Planta plantaPlantada;
 
 
 

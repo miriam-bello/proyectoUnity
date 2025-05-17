@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52be925e0f018234ba2b2d7a040d8004, type: 3}
+  m_Name: Nyanzano
+  m_EditorClassIdentifier: 
+  fruto: {fileID: 11400000, guid: f1438668992cfa4449cb6e52e874a7fd, type: 2}
+  plantado: {fileID: -1388872197309099339, guid: a373b8742caffeb40afd5d60c361b822, type: 3}
+  creciendo1: {fileID: -1388872197309099339, guid: a373b8742caffeb40afd5d60c361b822, type: 3}
+  creciendo2: {fileID: -1388872197309099339, guid: a373b8742caffeb40afd5d60c361b822, type: 3}
+  crecido: {fileID: -1388872197309099339, guid: a373b8742caffeb40afd5d60c361b822, type: 3}
+  conFruto: {fileID: 4437774811667168486, guid: a373b8742caffeb40afd5d60c361b822, type: 3}
+  minutosCreciendo1: 0
+  minutosCreciendo2: 0
+  minutosCrecido: 0
+  minutosConFruto: 100
