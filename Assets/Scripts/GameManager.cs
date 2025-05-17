@@ -177,7 +177,8 @@ public class GameManager : MonoBehaviour
             RaycastHit2D[] hits = Physics2D.RaycastAll(new Vector2(ray.origin.x, ray.origin.y), Vector2.zero, plantingLayer);
             foreach (RaycastHit2D raycastHit in hits)
             {
-                onPlant(raycastHit.collider.gameObject.GetComponent<PlantingSpotScript>());
+                PlantingSpotScript plantingSpot = raycastHit.collider.gameObject.GetComponent<PlantingSpotScript>();
+                onPlant(plantingSpot);
                 SetIsPlanting(null);
                 break;
             }

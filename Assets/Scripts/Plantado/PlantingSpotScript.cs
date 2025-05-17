@@ -10,13 +10,17 @@ public class PlantingSpotScript : MonoBehaviour
 
 
 
-    public void SetPlanta(Planta planta)
+    public bool SetPlanta(Planta planta)
     {
+        if (this.plantaPlantada != null) {
+            return false;
+        }
         SpriteRenderer spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         BoxCollider2D boxCollider = gameObject.GetComponent<BoxCollider2D>();
         plantaPlantada = planta;
         spriteRenderer.enabled = false;
         boxCollider.isTrigger = true;
+       
         if (planta != null)
         {
             boxCollider.isTrigger = false;
@@ -24,6 +28,8 @@ public class PlantingSpotScript : MonoBehaviour
             plantadoTime = GameManager.GetInstance().time;
             spriteRenderer.sprite = planta.plantado;
         }
+
+        return true;
 
     }
 
@@ -76,7 +82,6 @@ public class PlantingSpotScript : MonoBehaviour
 
     private void OnMouseDown()
     {
-        ;
         if (isConFruto()) {
 
            //semillas aleatorias

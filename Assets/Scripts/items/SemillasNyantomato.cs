@@ -13,17 +13,18 @@ public class SemillasNyantomato : Item
             plantaData = Resources.Load<Planta>("Plantas/PlantaNyantomato");
         }
 
+        //Ponemos el juego en modoPlantar
         GameManager.GetInstance().SetIsPlanting(
+            //Plantar
             plantingSpot =>
             {
-                plantingSpot.SetPlanta(plantaData);
-                pilaDeItem.cantidad--;
-                InventarioManager.GetInstance().RebuildUiInventario();
-            }
+                if (plantingSpot.SetPlanta(plantaData))
+                {
+                    pilaDeItem.cantidad--;
+                    InventarioManager.GetInstance().RebuildUiInventario();
+                }
+            } );
 
-            );
-
-
-        Debug.Log("se usó una SemillasNyantomato");
     }
+
 }

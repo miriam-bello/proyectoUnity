@@ -15,9 +15,11 @@ public class SemillasPurrrengena : Item
         GameManager.GetInstance().SetIsPlanting(
             plantingSpot =>
                 {
-                    plantingSpot.SetPlanta(plantaData);
-                    pilaDeItem.cantidad--;
-                    InventarioManager.GetInstance().RebuildUiInventario();
+                    if (plantingSpot.SetPlanta(plantaData))
+                    {
+                        pilaDeItem.cantidad--;
+                        InventarioManager.GetInstance().RebuildUiInventario();
+                    }
                 }
 
             );
