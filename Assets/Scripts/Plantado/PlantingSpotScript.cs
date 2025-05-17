@@ -12,7 +12,8 @@ public class PlantingSpotScript : MonoBehaviour
 
     public bool SetPlanta(Planta planta)
     {
-        if (this.plantaPlantada != null) {
+        if (this.plantaPlantada != null)
+        {
             return false;
         }
         SpriteRenderer spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
@@ -20,7 +21,7 @@ public class PlantingSpotScript : MonoBehaviour
         plantaPlantada = planta;
         spriteRenderer.enabled = false;
         boxCollider.isTrigger = true;
-       
+
         if (planta != null)
         {
             boxCollider.isTrigger = false;
@@ -72,32 +73,56 @@ public class PlantingSpotScript : MonoBehaviour
 
     }
 
-    private bool isConFruto() {
-        if (plantaPlantada == null) { 
+    private bool isConFruto()
+    {
+        if (plantaPlantada == null)
+        {
             return false;
         }
 
-        return gameObject.GetComponent<SpriteRenderer>().sprite== plantaPlantada.conFruto;
+        return gameObject.GetComponent<SpriteRenderer>().sprite == plantaPlantada.conFruto;
     }
 
+    [SerializeField] private float distanciaInteraccion = 3f; // Rango
+    private Transform jugador;
+
+    private void Start()
+    {
+        //buscamos la posicion del jugador
+        jugador = GameObject.FindWithTag("Player").GetComponent<Transform>();
+    }
     private void OnMouseDown()
     {
-        if (isConFruto()) {
+        //calcula la distancia
+        float distancia = Vector2.Distance(
+            new Vector2(transform.position.x, transform.position.y),
+            new Vector2(jugador.position.x, jugador.position.y)
+        );
 
-           //semillas aleatorias
-            int numeroAleatorio = UnityEngine.Random.Range(0, 3);
+        //activa el cartel cual haces click si la distancia es menor o igual al Rango(3f)
+        if (distancia <= distanciaInteraccion)
+        {
 
-            if (numeroAleatorio < 1) {
-                numeroAleatorio = UnityEngine.Random.Range(0, 1);
-                if (numeroAleatorio > 0) {
-                    InventarioManager.GetInstance().addItem(Resources.Load<SemillasPurrrengena>("Items/SemillasPurrrengena"), 1);
+            if (isConFruto())
+            {
+
+                //semillas aleatorias
+                int numeroAleatorio = UnityEngine.Random.Range(0, 3);
+
+                if (numeroAleatorio < 1)
+                {
+                    numeroAleatorio = UnityEngine.Random.Range(0, 1);
+                    if (numeroAleatorio > 0)
+                    {
+                        InventarioManager.GetInstance().addItem(Resources.Load<SemillasPurrrengena>("Items/SemillasPurrrengena"), 1);
+                    }
+                    InventarioManager.GetInstance().addItem(Resources.Load<SemillasNyantomato>("Items/SemillasNyantomato"), 1);
+
                 }
-                InventarioManager.GetInstance().addItem(Resources.Load<SemillasNyantomato>("Items/SemillasNyantomato"), 1);
 
+                InventarioManager.GetInstance().addItem(plantaPlantada.fruto, 3);
+                this.plantadoTime = GameManager.GetInstance().time.AddMinutes(-plantaPlantada.minutosCreciendo2);
             }
-
-            InventarioManager.GetInstance().addItem(plantaPlantada.fruto,3);
-            this.plantadoTime= GameManager.GetInstance().time.AddMinutes(- plantaPlantada.minutosCreciendo2);
         }
     }
 
