@@ -10,7 +10,7 @@ public class SemillasNyantomato : Item
 
         if (plantaData == null)
         {
-            plantaData = Resources.Load<Planta>("Plantas/PlantaPurrrengena");
+            plantaData = Resources.Load<Planta>("Plantas/PlantaNyantomato");
         }
 
         GameManager.GetInstance().SetIsPlanting(

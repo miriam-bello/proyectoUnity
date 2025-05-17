@@ -12,8 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86366544a1c302c40a026431b4a11263, type: 3}
   m_Name: PlantaPurrrengena
   m_EditorClassIdentifier: 
+  fruto: {fileID: 11400000, guid: 64f4c156cad00254682a92e3010564a1, type: 2}
   plantado: {fileID: 21300000, guid: 1b69578d0616ab54b8c4669a3469407f, type: 3}
   creciendo1: {fileID: -1814993710922876559, guid: 73042c0e7c1bf8546b415067e4c16ac9, type: 3}
   creciendo2: {fileID: -9086133981875679736, guid: 73042c0e7c1bf8546b415067e4c16ac9, type: 3}
   crecido: {fileID: 793823232435489645, guid: 73042c0e7c1bf8546b415067e4c16ac9, type: 3}
   conFruto: {fileID: -337184130608196627, guid: 73042c0e7c1bf8546b415067e4c16ac9, type: 3}
+  minutosCreciendo1: 10
+  minutosCreciendo2: 30
+  minutosCrecido: 60
+  minutosConFruto: 100
