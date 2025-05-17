@@ -76,8 +76,22 @@ public class PlantingSpotScript : MonoBehaviour
 
     private void OnMouseDown()
     {
+        ;
         if (isConFruto()) {
-            InventarioManager.GetInstance().addItem(plantaPlantada.fruto,2);
+
+           //semillas aleatorias
+            int numeroAleatorio = UnityEngine.Random.Range(0, 3);
+
+            if (numeroAleatorio < 1) {
+                numeroAleatorio = UnityEngine.Random.Range(0, 1);
+                if (numeroAleatorio > 0) {
+                    InventarioManager.GetInstance().addItem(Resources.Load<SemillasPurrrengena>("Items/SemillasPurrrengena"), 1);
+                }
+                InventarioManager.GetInstance().addItem(Resources.Load<SemillasNyantomato>("Items/SemillasNyantomato"), 1);
+
+            }
+
+            InventarioManager.GetInstance().addItem(plantaPlantada.fruto,3);
             this.plantadoTime= GameManager.GetInstance().time.AddMinutes(- plantaPlantada.minutosCreciendo2);
         }
     }

@@ -66,6 +66,9 @@ public class GameManager : MonoBehaviour
         if (scene.name == "SceneGranja")
         {
             PrepararJuego();
+            ShowPlantingSpots();
+        } else {
+            HidePlantingSpots();
         }
     }
 
@@ -77,7 +80,7 @@ public class GameManager : MonoBehaviour
 
         //cargar escena
         // Usar SceneManager.sceneLoaded para esperar a que la escena esté lista
-        SceneManager.LoadScene("SceneGranja");
+        Granja();
 
     }
 
@@ -100,6 +103,31 @@ public class GameManager : MonoBehaviour
         //cargar escena
         Application.Quit();
     }
+
+    public void HidePlantingSpots()
+    {
+        GameObject plantingSpots = GameObject.FindGameObjectWithTag("PlantingSpots");
+        Vector3 nuevaPosicion = new Vector3(plantingSpots.transform.position.x, plantingSpots.transform.position.y, -11);
+        plantingSpots.transform.SetPositionAndRotation(nuevaPosicion, plantingSpots.transform.rotation);
+    }
+
+    public void ShowPlantingSpots()
+    {
+        GameObject plantingSpots = GameObject.FindGameObjectWithTag("PlantingSpots");
+        Vector3 nuevaPosicion = new Vector3(plantingSpots.transform.position.x, plantingSpots.transform.position.y, 0);
+        plantingSpots.transform.SetPositionAndRotation(nuevaPosicion, plantingSpots.transform.rotation);
+    }
+
+    public void Granja()
+    {
+        SceneManager.LoadScene("SceneGranja");
+    }
+
+    public void Casa()
+    {
+        SceneManager.LoadScene("SceneCasa");
+    }
+
 
     //---------------destruir objetos---------------
     public void DestroyGame()

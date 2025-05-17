@@ -8,6 +8,7 @@ TagManager:
   - GameManager
   - Inventario
   - interfaz
+  - PlantingSpots
   layers:
   - Default
   - TransparentFX
