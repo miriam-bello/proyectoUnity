@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class PlantingSpotScript : MonoBehaviour
 {
+    private static GameObject plantingSpotInstance;
     //momento en el que fue plantado
     private DateTime plantadoTime;
     private Planta plantaPlantada;
@@ -24,16 +25,4 @@ public class PlantingSpotScript : MonoBehaviour
 
     }
 
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }

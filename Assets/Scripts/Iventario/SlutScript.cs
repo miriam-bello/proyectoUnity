@@ -20,4 +20,5 @@ public class SlutScript : MonoBehaviour,IPointerClickHandler
 
     }
 
+
 }
