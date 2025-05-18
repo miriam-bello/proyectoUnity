@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class PlantingSpotScript : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class PlantingSpotScript : MonoBehaviour
     //momento en el que fue plantado
     public DateTime plantadoTime;
     public Planta plantaPlantada;
+    private AudioSource audioSource;
 
 
     public bool SetPlanta(Planta planta)
@@ -89,9 +91,11 @@ public class PlantingSpotScript : MonoBehaviour
     {
         //buscamos la posicion del jugador
         jugador = GameObject.FindWithTag("Player").GetComponent<Transform>();
+        audioSource = GetComponent<AudioSource>();
     }
     private void OnMouseDown()
     {
+       
         //calcula la distancia
         float distancia = Vector2.Distance(
             new Vector2(transform.position.x, transform.position.y),
@@ -105,10 +109,16 @@ public class PlantingSpotScript : MonoBehaviour
             if (isConFruto())
             {
 
-                //semillas aleatorias
-                int numeroAleatorio = UnityEngine.Random.Range(0, 3);
+                //sonido recoger
+                if (audioSource != null && audioSource.clip != null)
+                {
+                    audioSource.Play();
+                }
 
-                if (numeroAleatorio < 1)
+                //semillas aleatorias
+                int numeroAleatorio = UnityEngine.Random.Range(0, 2);
+
+                if (numeroAleatorio == 1)
                 {
                     numeroAleatorio = UnityEngine.Random.Range(0, 2);
                     if (numeroAleatorio == 1)
