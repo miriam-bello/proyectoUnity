@@ -148,6 +148,7 @@ public class GameManager : MonoBehaviour
         Destroy(GameObject.FindWithTag("interfaz"));
         Destroy(GameObject.FindWithTag("PlantingSpots"));
         Destroy(GameObject.FindWithTag("Vaca"));
+        Destroy(GameObject.FindWithTag("Inventario"));
     }
 
     //-----------Gestion plantar----------

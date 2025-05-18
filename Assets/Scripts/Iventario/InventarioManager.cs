@@ -1,4 +1,3 @@
-using NUnit.Framework;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -78,14 +77,15 @@ public class InventarioManager : MonoBehaviour
             Image image = childTransform.gameObject.GetComponent<Image>();
             if (slot.item != null)
             {
-                image.color = image.color.WithAlpha(1);
+
+                image.color = new Color(image.color.r, image.color.g, image.color.b, 1);
                 image.sprite = slot.item.icon;
 
             }
             else
             {
                 //para que no se vea cuando no hay nada
-                image.color = image.color.WithAlpha(0);
+                image.color =new Color( image.color.r, image.color.g,image.color.b, 0);
                 image.sprite = null;
             }
 

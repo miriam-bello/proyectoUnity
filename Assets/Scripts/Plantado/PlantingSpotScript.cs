@@ -110,12 +110,15 @@ public class PlantingSpotScript : MonoBehaviour
 
                 if (numeroAleatorio < 1)
                 {
-                    numeroAleatorio = UnityEngine.Random.Range(0, 1);
-                    if (numeroAleatorio > 0)
+                    numeroAleatorio = UnityEngine.Random.Range(0, 2);
+                    if (numeroAleatorio == 1)
                     {
                         InventarioManager.GetInstance().addItem(Resources.Load<SemillasPurrrengena>("Items/SemillasPurrrengena"), 1);
                     }
-                    InventarioManager.GetInstance().addItem(Resources.Load<SemillasNyantomato>("Items/SemillasNyantomato"), 1);
+                    else {
+                        InventarioManager.GetInstance().addItem(Resources.Load<SemillasNyantomato>("Items/SemillasNyantomato"), 1);
+
+                    }
 
                 }
 

@@ -83,7 +83,7 @@ public class vacaMu : MonoBehaviour
 
         if (QuiereMasFruta())
         {
-            if (haComido) { ManagerDialogos.GetInstance().MostrarMensaje("La vaca se comio tus frutas, que cara dura! Sigue con hambre"); }
+            if (haComido) { ManagerDialogos.GetInstance().MostrarMensaje("La nekovaca se comio tus frutas, que cara dura! Sigue con hambre"); }
             else
             {
                 ManagerDialogos.GetInstance().MostrarMensaje("La nekovaca parece hambrienta");

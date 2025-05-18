@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    GameObject instance;
+   static GameObject instance;
     void Awake()
     {
         if (instance != null)
