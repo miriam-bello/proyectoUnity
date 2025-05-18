@@ -9,7 +9,6 @@ public class PlantingSpotScript : MonoBehaviour
     public Planta plantaPlantada;
 
 
-
     public bool SetPlanta(Planta planta)
     {
         if (this.plantaPlantada != null)

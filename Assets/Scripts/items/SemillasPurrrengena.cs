@@ -14,7 +14,9 @@ public class SemillasPurrrengena : Item
             plantaData = Resources.Load<Planta>("Plantas/PlantaPurrrengena");
         }
 
+        //Ponemos el juego en modoPlantar
         GameManager.GetInstance().SetIsPlanting(
+            //Plantar
             plantingSpot =>
                 {
                     if (plantingSpot.SetPlanta(plantaData))
@@ -25,8 +27,6 @@ public class SemillasPurrrengena : Item
                 }
 
             );
-        Debug.Log("se usó una SemillasPurrrengena");
-
     }
 
 

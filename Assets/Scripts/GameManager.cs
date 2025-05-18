@@ -39,27 +39,27 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         time = time.AddMilliseconds(Time.deltaTime * 120 * 1000);
+        //gestiona lo que ocurre si se entrado en modo plantar
         HandlePlanting();
     }
 
     //---------------Preparar juego----------------
     public void PrepararJuego()
     {
-        //recuperamos el gameObject player
+        //evitar que destruya el player y la interfaz al cambiar de escena
         GameObject playerGameObject = GameObject.FindGameObjectWithTag("Player");
         if (playerGameObject != null)
         {
             DontDestroyOnLoad(playerGameObject);
         }
 
-        //recuperamos la interfaz 
         GameObject interfazGameObject = GameObject.FindGameObjectWithTag("interfaz");
         if (interfazGameObject != null)
         {
             DontDestroyOnLoad(interfazGameObject);
         }
-
     }
+
 
     public void PrepararJuego(Scene scene, LoadSceneMode loadSceneMode)
     {
@@ -75,6 +75,7 @@ public class GameManager : MonoBehaviour
     //----------------Gesti�n de las pantallas ---------------
     public void Jugar()
     {
+        //para borrar el juego anterior
         DestroyGame();
         Time.timeScale = 1.0f;
 
@@ -145,11 +146,12 @@ public class GameManager : MonoBehaviour
         time = new DateTime(1993, 1, 2, 7, 0, 0);
         Destroy(GameObject.FindWithTag("Player"));
         Destroy(GameObject.FindWithTag("interfaz"));
-        Destroy(GameObject.FindWithTag("Inventario"));
+        Destroy(GameObject.FindWithTag("PlantingSpots"));
+        Destroy(GameObject.FindWithTag("Vaca"));
     }
 
-    //-----------Gesti�n plantar----------
-
+    //-----------Gestion plantar----------
+    //action para indicar que es una lambda que no devuelve nigún valor
     Action<PlantingSpotScript> onPlant;
     bool isPlanting = false;
     public LayerMask plantingLayer;
@@ -158,15 +160,7 @@ public class GameManager : MonoBehaviour
     public void SetIsPlanting(Action<PlantingSpotScript> onPlant)
     {
         isPlanting = onPlant != null;
-
-        if (isPlanting)
-        {
-            Debug.Log("Entering planting mode");
-        }
-        else {
-            Debug.Log("Leaving planting mode");
-        }
-         
+         //cuando está en modo plantar se le pasa la función onPlant que es la que tiene que ejecutar cuando se seleccione un planting spot
         this.onPlant = onPlant;
     }
 
@@ -179,14 +173,12 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            if (EventSystem.current.IsPointerOverGameObject()) {
-                Debug.Log("Yes");
-            }
-
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D[] hits = Physics2D.RaycastAll(new Vector2(ray.origin.x, ray.origin.y), Vector2.zero, plantingLayer);
+
+            //recorre los hits y si encuentra un "PlantingSpotScript" ejecuta la funcion onPlant(en ese plantingSpot);
             foreach (RaycastHit2D raycastHit in hits)
-            {
+            {  
                 PlantingSpotScript plantingSpot = raycastHit.collider.gameObject.GetComponent<PlantingSpotScript>();
                 onPlant(plantingSpot);
                 SetIsPlanting(null);

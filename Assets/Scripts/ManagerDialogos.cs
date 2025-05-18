@@ -30,7 +30,6 @@ public class ManagerDialogos : MonoBehaviour
     }
 
     void OcultarMensaje() {
-
         gameObject.GetComponent<Canvas>().enabled = false;
     }
 

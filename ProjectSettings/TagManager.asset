@@ -9,6 +9,7 @@ TagManager:
   - Inventario
   - interfaz
   - PlantingSpots
+  - Vaca
   layers:
   - Default
   - TransparentFX
