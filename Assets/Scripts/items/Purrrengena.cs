@@ -5,6 +5,6 @@ public class Purrrengena : Item
 {
     public override void Use(PilaDeItem pilaDeItem)
     {
-        Debug.Log("se usó una Purrrengena");
+        ManagerDialogos.GetInstance().MostrarMensaje("Parece que a la vaca le gustaría esta fruta");
     }
 }

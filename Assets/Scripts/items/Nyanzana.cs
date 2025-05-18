@@ -6,6 +6,6 @@ public class Nyanzana : Item
 
     public override void Use(PilaDeItem pilaDeItem)
     {
-        Debug.Log("Parece una Nyanzana muy sabrosa");
+        ManagerDialogos.GetInstance().MostrarMensaje("Parece que a la vaca le gustaría esta fruta");
     }
 }

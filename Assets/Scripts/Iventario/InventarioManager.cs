@@ -136,8 +136,7 @@ public class InventarioManager : MonoBehaviour
         //si no hay slots vacios
         if (cantidad > 0)
         {
-            Debug.LogError(" No hay sitio en el inventario");
-
+            ManagerDialogos.GetInstance().MostrarMensaje("No hay sitio en el inventario");
         }
         RebuildUiInventario();
 

@@ -114,6 +114,9 @@ public class GameManager : MonoBehaviour
     public void HidePlantingSpots()
     {
         GameObject plantingSpots = GameObject.FindGameObjectWithTag("PlantingSpots");
+        if (plantingSpots == null) {
+            return;
+        }
         Vector3 nuevaPosicion = new Vector3(plantingSpots.transform.position.x, plantingSpots.transform.position.y, -11);
         plantingSpots.transform.SetPositionAndRotation(nuevaPosicion, plantingSpots.transform.rotation);
     }

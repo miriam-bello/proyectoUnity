@@ -5,6 +5,7 @@ public class Nyantomato : Item
 {
     public override void Use(PilaDeItem pilaDeItem)
     {
-        Debug.Log("se usó una Nyantomato");
+        ManagerDialogos.GetInstance().MostrarMensaje("Parece que a la vaca le gustaría esta fruta");
+
     }
 }

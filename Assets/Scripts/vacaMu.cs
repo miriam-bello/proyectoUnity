@@ -53,8 +53,7 @@ public class vacaMu : MonoBehaviour
                     {
 
                         contadorFrutas = contadorFrutas + pilaDeItem.cantidad;
-
-                        Debug.Log("la vaca se comio tus frutas");
+                        
                         pilaDeItem.item = null;
                         pilaDeItem.cantidad = 0;
 
@@ -64,11 +63,19 @@ public class vacaMu : MonoBehaviour
 
             }
         }
-
-        if (contadorFrutas >= 50)
+        if (QuiereMasFruta())
         {
+            ManagerDialogos.GetInstance().MostrarMensaje("La vaca se comio tus frutas, que cara dura! Sigue con hambre");
+
+        }
+
+        if (!QuiereMasFruta()) {
             gameObject.GetComponent<MovimientoVaca>().sePuedoMover = true;
         }
+    }
+
+    public bool QuiereMasFruta() {
+        return contadorFrutas < 50;
     }
 
 }

@@ -5,7 +5,6 @@ public class Cerezarpas : Item
 {
     public override void Use(PilaDeItem pilaDeItem)
     {
-        Debug.Log("se usó una Cerezarpas");
-        //llamar algo que quite uno del inventario
+        ManagerDialogos.GetInstance().MostrarMensaje("Parece que a la vaca le gustaría esta fruta");
     }
 }
