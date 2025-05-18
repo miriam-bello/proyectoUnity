@@ -7,6 +7,7 @@ public class SemillasNyantomato : Item
 
     public override void Use(PilaDeItem pilaDeItem)
     {
+        ManagerDialogos.GetInstance().MostrarMensaje("Con estas semillas se podria plantar algo");
 
         if (plantaData == null)
         {

@@ -3081,9 +3081,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\"Vaca detectada en el camino! Modo: Terca activado.\r\nAlimentaci\xF3n
-    requerida para desbloquear movimiento.\r\nSugerencia: Esa manzana gigante en
-    tu inventario podr\xEDa ser\u2026 \xA1un buen soborno!\""
+  m_text: '"Hola primo! A ver si consigues sacar a esa nekovaca tuya del camino y
+    te vienes a mi keli a echar unas partidas al MiauMiauValley"
+
+
+    -Mikey Mouse'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

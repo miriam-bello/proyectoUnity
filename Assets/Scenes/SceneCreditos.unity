@@ -232,8 +232,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 28, y: 57.423}
-  m_SizeDelta: {x: 992.2422, y: 480.1133}
+  m_AnchoredPosition: {x: 45, y: 8.5725}
+  m_SizeDelta: {x: 1312.7014, y: 577.8143}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &228566347
 MonoBehaviour:
@@ -255,9 +255,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "M\xFAsica: \n\tTowball - Towball's Crossing\n\nSprite player:\n\tPIPOYA
-    FREE RPG Character Sprites NEKONIN\n\nTiles:\n\tInteriorTilesLITE\n\tx\n\nElementos
-    UI:\n\tPastelUIFree\n"
+  m_text: "M\xFAsica: \n\t-Towball - Towball's Crossing: 16 7pm _ Towball's Crossing\n\nFX
+    sonido: \n\t-Catgirl Fighting SFX: 006_meow\n\nSprites:\n\t-PIPOYA: https://pipoya.itch.io/pipoya-free-rpg-character-sprites-nekonin\n\t-Graduation-cat:
+    https://graduation-cat.itch.io/house-interior-tileset-32x32\n\t-Bosyaron: https://bosyaron.itch.io/cutefarmassetpack\n\nElementos
+    UI:\n\t-PastelUIFree: https://toffeecraft.itch.io/ui-user-interface-pack-pastel-dream\n\nProgramaci\xF3n:
+    \n\t-Miriam Bello Davila"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -290,7 +292,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -322,7 +324,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 6.0839844, y: 14.411804, z: 10.375488, w: 12.637665}
+  m_margin: {x: 29.532166, y: 14.411804, z: 18.191406, w: 12.637665}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -895,7 +897,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.23137255, g: 0.654902, b: 0.62352943, a: 0}
+  m_BackGroundColor: {r: 0.4509804, g: 0.89411765, b: 0.78431374, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
