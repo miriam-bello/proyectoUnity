@@ -54,17 +54,6 @@ public class InventarioManager : MonoBehaviour
             return;
         }
 
-
-        //objetos con los que empiezas
-        SemillasPurrrengena data1 = Resources.Load<SemillasPurrrengena>("Items/SemillasPurrrengena");
-        inventario[0].item = data1;
-        inventario[0].cantidad = 1;
-
-        SemillasNyantomato data2 = Resources.Load<SemillasNyantomato>("Items/SemillasNyantomato");
-        inventario[1].item = data2;
-        inventario[1].cantidad = 1;
-
-
         //para solo tener un inventario singleton
         inventarioInstance = gameObject;
 
@@ -104,10 +93,10 @@ public class InventarioManager : MonoBehaviour
         }
     }
 
-    //añadir al inventario
+    //aï¿½adir al inventario
     public void addItem(Item item, int cantidad)
     {
-        //añadir a un stack que ya existe
+        //aï¿½adir a un stack que ya existe
         foreach (PilaDeItem pilaDeItem in inventario)
         {
             if (pilaDeItem.item == null)
@@ -118,7 +107,7 @@ public class InventarioManager : MonoBehaviour
             {
                 if (item.itemNombre == pilaDeItem.item.itemNombre)
                 {
-                    //añadir la cantidad al item que ya está en el inventario
+                    //aï¿½adir la cantidad al item que ya estï¿½ en el inventario
                     pilaDeItem.cantidad += cantidad;
                     cantidad = pilaDeItem.cantidad - pilaDeItem.item.maxStack;
                     if (cantidad < 0) { cantidad = 0; }
@@ -128,7 +117,7 @@ public class InventarioManager : MonoBehaviour
 
         }
 
-        // si no caben mas se añaden en otro slot
+        // si no caben mas se aï¿½aden en otro slot
         if (cantidad > 0)
         {
             for (int i = 0; i < inventario.Length; i++)

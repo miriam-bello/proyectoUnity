@@ -72,14 +72,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    //----------------Gestión de las pantallas ---------------
+    //----------------Gestiï¿½n de las pantallas ---------------
     public void Jugar()
     {
         DestroyGame();
         Time.timeScale = 1.0f;
 
         //cargar escena
-        // Usar SceneManager.sceneLoaded para esperar a que la escena esté lista
+        // Usar SceneManager.sceneLoaded para esperar a que la escena estï¿½ lista
         Granja();
 
     }
@@ -96,6 +96,13 @@ public class GameManager : MonoBehaviour
         DestroyGame();
         //cargar escena
         SceneManager.LoadScene("SceneMenuPrincipal");
+    }
+
+    public void Final()
+    {
+        //cargar escena
+        DestroyGame();
+        SceneManager.LoadScene("SceneFinal");
     }
 
     public void Salir()
@@ -138,7 +145,7 @@ public class GameManager : MonoBehaviour
         Destroy(GameObject.FindWithTag("Inventario"));
     }
 
-    //-----------Gestión plantar----------
+    //-----------Gestiï¿½n plantar----------
 
     Action<PlantingSpotScript> onPlant;
     bool isPlanting = false;

@@ -2,15 +2,29 @@ using UnityEngine;
 
 public class vacaMu : MonoBehaviour
 {
+    private static GameObject vacaInstancia;
     public int contadorFrutas;
-    [SerializeField] private float distanciaInteraccion = 4f; // Rango
-
+    private float distanciaInteraccion = 4f; // Rango
     private Transform jugador;
 
     private void Start()
     {
         //buscamos la posicion del jugador
         jugador = GameObject.FindWithTag("Player").GetComponent<Transform>();
+    }
+
+    private void Awake()
+    {
+        if (vacaInstancia != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        //para solo tener un inventario singleton
+        vacaInstancia = gameObject;
+
+        DontDestroyOnLoad(gameObject);
     }
 
 
@@ -25,7 +39,36 @@ public class vacaMu : MonoBehaviour
         //activa el cartel cual haces click si la distancia es menor o igual al Rango(3f)
         if (distancia <= distanciaInteraccion)
         {
-            Debug.Log("La vaca: mu!, la misma vaca: mu!");
+            //si hay frutas en el inventario se las come + pone mensaje de que tiene hambre
+            PilaDeItem[] inventario = InventarioManager.GetInstance().inventario;
+
+            foreach (PilaDeItem pilaDeItem in inventario)
+            {
+                if (pilaDeItem.item != null)
+                {
+                    if (pilaDeItem.item.itemNombre == "Cerezarpas" ||
+                        pilaDeItem.item.itemNombre == "Nyantomato" ||
+                        pilaDeItem.item.itemNombre == "Nyanzana" ||
+                        pilaDeItem.item.itemNombre == "Purrrengena")
+                    {
+
+                        contadorFrutas = contadorFrutas + pilaDeItem.cantidad;
+
+                        Debug.Log("la vaca se comio tus frutas");
+                        pilaDeItem.item = null;
+                        pilaDeItem.cantidad = 0;
+
+                        InventarioManager.GetInstance().RebuildUiInventario();
+                    }
+                }
+
+            }
+        }
+
+        if (contadorFrutas >= 50)
+        {
+            gameObject.GetComponent<MovimientoVaca>().sePuedoMover = true;
         }
     }
+
 }
