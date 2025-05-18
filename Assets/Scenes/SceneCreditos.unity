@@ -256,10 +256,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "M\xFAsica: \n\t-Towball - Towball's Crossing: 16 7pm _ Towball's Crossing\n\nFX
-    sonido: \n\t-Catgirl Fighting SFX: 006_meow\n\nSprites:\n\t-PIPOYA: https://pipoya.itch.io/pipoya-free-rpg-character-sprites-nekonin\n\t-Graduation-cat:
+    sonido: \n\t-Catgirl Fighting SFX: 006_meow\n\thttps://cicifyre.itch.io/free-catgirl-fighting-voice-pack\n\t-Cyrex
+    Studios: Wood Block3\n\thttps://cyrex-studios.itch.io/universal-ui-soundpack\n\nSprites:\n\t-PIPOYA:
+    https://pipoya.itch.io/pipoya-free-rpg-character-sprites-nekonin\n\t-Graduation-cat:
     https://graduation-cat.itch.io/house-interior-tileset-32x32\n\t-Bosyaron: https://bosyaron.itch.io/cutefarmassetpack\n\nElementos
-    UI:\n\t-PastelUIFree: https://toffeecraft.itch.io/ui-user-interface-pack-pastel-dream\n\nProgramaci\xF3n:
-    \n\t-Miriam Bello Davila"
+    UI:\n\t-PastelUIFree: https://toffeecraft.itch.io/ui-user-interface-pack-pastel-dream\n\nProgramaci\xF3n
+    y dise\xF1o: \n\t-Miriam Bello Davila"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
